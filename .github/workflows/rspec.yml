@@ -30,7 +30,7 @@ jobs:
           pwd
           ls
           cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create
-          bundle exec rails db:migrate
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
       - name: run rspec
         run: bundle exec rspec
