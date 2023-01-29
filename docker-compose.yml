@@ -5,6 +5,8 @@ services:
     image: mysql:8.0.31
     ports:
       - 3306:3306
+    volumes:
+      - youtube-db-store:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
   backend:
@@ -25,3 +27,6 @@ services:
     command: sh -c "cd app && npm start"
     ports:
       - 3001:3000
+
+volumes:
+  youtube-db-store:
