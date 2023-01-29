@@ -32,6 +32,7 @@ jobs:
       - name: set up database
         run: |
           cp config/database.yml.ci config/database.yml
+          cat config/database.yml
           bundle exec rails db:create
       - name: run migration
         run: |
