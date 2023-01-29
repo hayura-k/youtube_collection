@@ -11,9 +11,9 @@ env:
 jobs:
   rspec:
     runs-on: ubuntu-latest
-    # defaults:
-    #   run:
-    #     working-directory: backend
+    defaults:
+      run:
+        working-directory: backend
     services:
       mysql:
         image: mysql:8.0.29
