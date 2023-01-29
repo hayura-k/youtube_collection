@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  RAILS_ENV: test
+
 jobs:
   rspec:
     runs-on: ubuntu-latest
@@ -16,7 +19,7 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: root
     steps:
       - uses: actions/checkout@v3
       - name: set up ruby
@@ -25,11 +28,11 @@ jobs:
           ruby-version: 3.1.3
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           working-directory: backend
+      - name: set up database
+        run: bundle exec rails db:create
       - name: run migration
         run: |
           ls
-          cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create RAILS_ENV=test
-          bundle exec rails db:migrate RAILS_ENV=test
+          bundle exec rails db:migrate
       - name: run rspec
         run: bundle exec rspec
