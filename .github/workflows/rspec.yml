@@ -6,7 +6,7 @@ on:
 
 env:
   RAILS_ENV: test
-  # DATABASE_HOST: 127.0.0.1
+  DATABASE_HOST: 127.0.0.1
 
 jobs:
   rspec:
