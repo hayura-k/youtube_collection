@@ -6,6 +6,7 @@ on:
 
 env:
   RAILS_ENV: test
+  DATABASE_HOST: 127.0.0.1
 
 jobs:
   rspec:
@@ -29,7 +30,9 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           working-directory: backend
       - name: set up database
-        run: bundle exec rails db:create
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create
       - name: run migration
         run: |
           ls
