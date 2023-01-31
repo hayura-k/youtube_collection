@@ -17,7 +17,6 @@ class FavoriteChannelsController < ApplicationController
   private
 
     def favorite_channnel_params
-      {name: 'test'}
-      # params.require(:).permit(:)
+      params.require(:favorite_channel).permit(:name)
     end
 end
