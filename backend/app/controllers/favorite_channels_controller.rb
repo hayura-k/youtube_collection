@@ -1,4 +1,9 @@
 class FavoriteChannelsController < ApplicationController
+  def index
+    favorite_channels = FavoriteChannel.all.order(id: :desc)
+    render json: {favorite_channels: favorite_channels, status: :ok}
+  end
+
   def create
     channel = FavoriteChannel.new(favorite_channnel_params)
 
