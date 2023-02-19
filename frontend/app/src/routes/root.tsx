@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Form } from '../components/Form/Form';
 import { ChannelList } from '../components/ChannelList/ChannelList';
+import { Dashboard } from '../components/Dashboard/Dashboard';
 
 export const router = createBrowserRouter([
   {
@@ -14,5 +15,9 @@ export const router = createBrowserRouter([
   {
     path: '/channels',
     element: <ChannelList />
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />
   }
 ]);
