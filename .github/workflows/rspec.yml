@@ -21,6 +21,11 @@ jobs:
           - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: root
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v3
       - name: set up ruby
@@ -32,10 +37,10 @@ jobs:
       - name: set up database
         run: |
           cp config/database.yml.ci config/database.yml
+          cat config/database.yml
           bundle exec rails db:create
       - name: run migration
         run: |
-          ls
           bundle exec rails db:migrate
       - name: run rspec
         run: bundle exec rspec
