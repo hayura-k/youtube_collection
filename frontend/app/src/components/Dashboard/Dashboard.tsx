@@ -207,6 +207,6 @@ function DashboardContent() {
   );
 }
 
-export default function Dashboard() {
+export const Dashboard = () => {
   return <DashboardContent />;
 }
