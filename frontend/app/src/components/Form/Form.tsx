@@ -5,10 +5,10 @@ export const Form = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = data => {
     console.log(data)
-    backendRequest(data)
+    createChannel(data)
   };
 
-  const backendRequest = (data) => {
+  const createChannel = (data) => {
     axios.post('http://localhost:3000/favorite_channels', data).then(res => {
       console.log(res)
     })
