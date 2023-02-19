@@ -12,10 +12,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
-  </React.StrictMode>
+    <RouterProvider router={router} />
+    <App />
+  </React.StrictMode >
 );
 
 // If you want to start measuring performance in your app, pass a function
